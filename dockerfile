@@ -1,5 +1,8 @@
 # start by pulling the python image
-FROM jupyter/scipy-notebook
+FROM ubuntu:focal
+
+RUN apt update
+RUN apt install python3-pip -y
 
 # copy the requirements file into the image
 COPY ./requirements.txt /app/requirements.txt
@@ -15,7 +18,7 @@ COPY app.py /app
 Copy Churnfinalized_model(2).sav /app
 
 
-# configure the container to run in an executed manner
+# conigure the container to run in an executed manner
 ENTRYPOINT [ "python" ]
 
 CMD ["app.py" ]
